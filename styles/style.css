@@ -19,9 +19,8 @@
   background-color: #fff;
   background-image: var(--body-gradient);
   background-position: top center;
-  background-size: 100% 960px;
+  background-attachment: fixed;
   background-repeat: no-repeat;
-  background-attachment: scroll;
 }
 
 .header {
@@ -146,7 +145,7 @@
   display: flex;
   justify-content: flex-end;
   align-items: center;
-  gap: 12px;
+  gap: 6px;
   padding: 25px;
 }
 
@@ -188,6 +187,25 @@
   transition: box-shadow 0.3s ease;
 }
 
+.button::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-color: var(--accent-color);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.5s ease-in-out;
+}
+
+.button:hover::before {
+  transform: scaleX(1);
+}
+
+.button:focus {
+  outline: none;
+  box-shadow: 2px 2px var(--accent-color);
+}
+
 .button-save {
   gap: 8px;
   padding: 15px 20px;
@@ -195,9 +213,38 @@
 }
 
 .button__text {
+  position: relative;
+  z-index: 2;
+  color: #fff;
   font-family: var(--accent-font), sans-serif;
   font-size: 14px;
   line-height: 0.9;
+  mix-blend-mode: difference;
+}
+
+.floppy-icon {
+  display: block;
+  flex-shrink: 0;
+}
+
+.save-icon {
+  position: relative;
+  z-index: 2;
+  inline-size: 21px;
+  block-size: 21px;
+}
+
+.popup__icon {
+  inline-size: 39px;
+  block-size: 39px;
+  flex-shrink: 0;
+}
+
+.button-save:hover .save-icon {
+  filter: invert(1);
+}
+
+.popup__close-button .button__text {
   text-transform: uppercase;
 }
 
@@ -245,10 +292,6 @@
     inline-size: 100%;
   }
 
-  .page {
-    background-size: 100% 667px;
-  }
-
   .card__logo {
     inset-block-start: 23px;
     inset-inline-end: 10px;
@@ -272,21 +315,16 @@
   }
 
   .save-icon {
-    inline-size: 28px;
-    block-size: 28px;
+    position: relative;
+    z-index: 2;
+    color: #fff;
+    mix-blend-mode: difference;
   }
 
   .popup[open] {
     inline-size: calc(337/375 * 100vw);
     padding: 26px 42px;
   }
-}
-
-.card__like-button,
-.button-save,
-.popup__close-button {
-  position: relative;
-  transition: box-shadow 0.3s ease;
 }
 
 .card__like-button::before,
@@ -314,17 +352,17 @@
   box-shadow: 2px 2px var(--accent-color);
 }
 
-.button__text,
-.save-icon {
-  position: relative;
-  z-index: 2;
-  color: #fff;
-  mix-blend-mode: difference;
-}
+/*.button__text,*/
+/*.save-icon {*/
+/*  position: relative;*/
+/*  z-index: 2;*/
+/*  color: #fff;*/
+/*  mix-blend-mode: difference;*/
+/*}*/
 
-.save-icon {
-  fill: #fff;
-}
+/*.save-icon {*/
+/*  fill: #fff;*/
+/*}*/
 
 .card__icon-button:focus {
   outline: none;
