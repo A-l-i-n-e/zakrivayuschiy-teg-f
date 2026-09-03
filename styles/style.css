@@ -222,26 +222,19 @@
   mix-blend-mode: difference;
 }
 
-.floppy-icon {
-  display: block;
-  flex-shrink: 0;
-}
-
 .save-icon {
   position: relative;
   z-index: 2;
   inline-size: 21px;
   block-size: 21px;
+  filter: invert(1);
+  mix-blend-mode: difference;
 }
 
 .popup__icon {
   inline-size: 39px;
   block-size: 39px;
   flex-shrink: 0;
-}
-
-.button-save:hover .save-icon {
-  filter: invert(1);
 }
 
 .popup__close-button .button__text {
@@ -282,10 +275,15 @@
   padding-block: 12.5px;
 }
 
-@media (width <= 375px) {
+@media (max-width: 376px) {
   .header {
     inline-size: 100%;
     block-size: 327px;
+    margin-block-end: 100px;
+  }
+
+  .main > .card:first-child{
+    margin-block-end: 20px;
   }
 
   .card{
@@ -293,32 +291,27 @@
   }
 
   .card__logo {
-    inset-block-start: 23px;
-    inset-inline-end: 10px;
+    inset-block-start: 21px;
+    inset-inline-end: 21px;
   }
 
   .card:nth-child(7) .card__description {
     padding: 26px 30px 0 25px;
   }
 
-  .card__title {
-    margin: 4px 10px 6px 10px ;
+  .card-title {
+    margin: 4px 10px 6px;
   }
 
-  .footer {
-    margin-block: 52px 100px;
-  }
-
-  .button-save {
+  .button.button-save{
     flex-direction: column;
+    row-gap: 8px;
     margin-block-end: 100px;
   }
 
   .save-icon {
-    position: relative;
-    z-index: 2;
-    color: #fff;
-    mix-blend-mode: difference;
+    inline-size: 28px;
+    block-size: 28px;
   }
 
   .popup[open] {
@@ -326,43 +319,6 @@
     padding: 26px 42px;
   }
 }
-
-.card__like-button::before,
-.button-save::before,
-.popup__close-button::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background-color: var(--accent-color);
-  transform: scaleX(0);
-  transform-origin: left;
-  transition: transform 0.5s ease-in-out;
-}
-
-.card__like-button:hover::before,
-.button-save:hover::before,
-.popup__close-button:hover::before {
-  transform: scaleX(1);
-}
-
-.card__like-button:focus,
-.button-save:focus,
-.popup__close-button:focus {
-  outline: none;
-  box-shadow: 2px 2px var(--accent-color);
-}
-
-/*.button__text,*/
-/*.save-icon {*/
-/*  position: relative;*/
-/*  z-index: 2;*/
-/*  color: #fff;*/
-/*  mix-blend-mode: difference;*/
-/*}*/
-
-/*.save-icon {*/
-/*  fill: #fff;*/
-/*}*/
 
 .card__icon-button:focus {
   outline: none;
